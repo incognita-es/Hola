@@ -7,4 +7,4 @@ def test_answer():
     assert inc(4) == 5
 
 def test_web():
-    assert holamundo() == 'Hola Mundoo!'
+    assert holamundo() == 'Hola Mundo!'
