@@ -1,3 +1,3 @@
-docker stop $(docker ps -aq)
-docker rm $(docker ps -aq)
-docker rmi $(docker images -aq)
+docker stop $(docker ps -aq) 2> /dev/null > salida.txt
+docker rm $(docker ps -aq) 2> /dev/null >> salida.txt
+#docker rmi $(docker images -aq)

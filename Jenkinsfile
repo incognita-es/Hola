@@ -29,9 +29,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-		sh '''
-                    #./elimina.sh
-                '''
+		timeout(time: 2, unit: 'MINUTES') {
+                    sh './elimina.sh'
+                }
+		echo 'Finishing...'
             }
         }
     }
