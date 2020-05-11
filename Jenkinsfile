@@ -4,24 +4,34 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo 'Building image...'
 		sh '''
-                    echo "Entramos dentro del sh"
-                    ls -lah
-		    echo "ls sh"
-		    ls -la
-		    date
+		    docker build -t web_python .
+                '''
+            }
+        }
+        stage('Run') {
+            steps {
+                echo 'Running...'
+                sh '''
+                    docker run -d --rm -p 5000:5000 web_python 
                 '''
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'Testing...'
+		sh '''
+                    /usr/bin/curl localhost:5000
+                '''
             }
         }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+		sh '''
+                    ./elimina.sh
+                '''
             }
         }
     }
