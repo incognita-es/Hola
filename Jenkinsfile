@@ -5,6 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
+		ls -la
+		echo 'Estamos haciendo LSs'
+		date
             }
         }
         stage('Test') {
