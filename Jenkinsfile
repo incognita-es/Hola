@@ -5,9 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-		ls -la
-		echo 'Estamos haciendo LSs'
-		date
+		sh '''
+                    echo "Entramos dentro del sh"
+                    ls -lah
+		    echo "ls sh"
+		    ls -la
+		    date
+                '''
             }
         }
         stage('Test') {
